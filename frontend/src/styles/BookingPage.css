@@ -1,0 +1,20 @@
+.booking-page-container {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8fafc;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.booking-form-wrapper {
+  width: 100%;
+  max-width: 480px;
+  animation: bookingFormFadeIn 0.3s ease-out;
+}
+
+@keyframes bookingFormFadeIn {
+  from { opacity: 0; transform: scale(0.98) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}

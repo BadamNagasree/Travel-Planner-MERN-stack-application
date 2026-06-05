@@ -1,0 +1,109 @@
+.booking-form {
+  max-width: 460px;
+  margin: 0 auto;
+  padding: 2.5rem;
+  background: #ffffff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-border);
+  font-family: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.booking-form h3 {
+  margin: 0 0 0.2rem 0;
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  font-weight: 750;
+  letter-spacing: -0.3px;
+}
+
+.form-info {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  margin: 0 0 0.5rem 0;
+  line-height: 1.45;
+}
+
+.booking-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.booking-form label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
+.booking-form select,
+.booking-form input {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  outline: none;
+  background-color: #fafbfc;
+  transition: all var(--transition);
+}
+
+.booking-form select:focus,
+.booking-form input:focus {
+  border-color: var(--color-link);
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+  background-color: #ffffff;
+}
+
+.error-message {
+  background-color: #fff5f5;
+  color: #c9302c;
+  border: 1px solid #fec2c2;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.success-message {
+  background-color: #f0fdf4;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.booking-submit-btn {
+  background: var(--color-accent);
+  color: white;
+  border: none;
+  padding: 0.85rem 1.5rem;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(242, 112, 36, 0.2);
+  transition: all var(--transition);
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.booking-submit-btn:hover {
+  background: var(--color-accent-light);
+  transform: translateY(-1px);
+  box-shadow: 0 5px 14px rgba(242, 112, 36, 0.35);
+}
+
+.booking-submit-btn:disabled {
+  background: var(--color-border);
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+  box-shadow: none;
+}

@@ -1,0 +1,93 @@
+.hero {
+  height: calc(100vh - 70px);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-family: inherit;
+}
+
+.hero-overlay {
+  background: rgba(11, 34, 64, 0.85); /* Rich Slate Navy Tinted Glass */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 4rem 3rem;
+  border-radius: var(--radius);
+  text-align: center;
+  color: #ffffff;
+  max-width: 700px;
+  width: 90%;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: heroCardFadeIn 0.4s ease-out;
+}
+
+@keyframes heroCardFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-badge {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  padding: 5px 14px;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.hero-overlay h1 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  margin: 0 0 1.2rem 0;
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+}
+
+@media (min-width: 576px) {
+  .hero-overlay h1 {
+    font-size: 3.2rem;
+  }
+}
+
+.hero-overlay p {
+  font-size: 1.1rem;
+  margin: 0 0 2.2rem 0;
+  line-height: 1.6;
+  color: #e2e8f0;
+  font-weight: 400;
+}
+
+.cta-btn {
+  padding: 0.95rem 2.2rem;
+  background: var(--color-accent);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 1.05rem;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(242, 112, 36, 0.3);
+  transition: all var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cta-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(242, 112, 36, 0.45);
+  background: var(--color-accent-light);
+}
+
+.cta-btn:active {
+  transform: translateY(0);
+}

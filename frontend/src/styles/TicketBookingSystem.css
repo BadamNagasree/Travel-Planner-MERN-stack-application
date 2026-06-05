@@ -1,0 +1,925 @@
+.ticket-system-container {
+  background: #ffffff;
+  padding: 2.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+  font-family: inherit;
+}
+
+/* Timeline progress bar */
+.booking-timeline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  position: relative;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.booking-timeline::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--color-border);
+  z-index: 1;
+  transform: translateY(-50%);
+}
+
+.timeline-node {
+  position: relative;
+  z-index: 2;
+  background-color: #ffffff;
+  border: 2px solid var(--color-border);
+  color: var(--color-text-muted);
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: all var(--transition);
+}
+
+.timeline-node.active {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(242, 112, 36, 0.15);
+}
+
+/* Search form styling */
+.ticket-search-form {
+  background-color: #f8fafc;
+  padding: 2rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  margin-bottom: 2rem;
+}
+
+.search-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .search-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.search-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.search-col label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
+.search-col input,
+.search-col select {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  outline: none;
+  background-color: #ffffff;
+  transition: border-color var(--transition);
+}
+
+.search-col input:focus,
+.search-col select:focus {
+  border-color: var(--color-link);
+}
+
+.search-trains-btn {
+  width: 100%;
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 0.9rem;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.search-trains-btn:hover {
+  background: var(--color-primary-light);
+}
+
+/* Train Row Card details */
+.trains-results-list h4 {
+  margin: 0 0 1.2rem 0;
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  font-weight: 750;
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: 0.6rem;
+}
+
+.train-row-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 1.2rem;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transition: all var(--transition);
+}
+
+@media (min-width: 992px) {
+  .train-row-card {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.train-row-card:hover {
+  border-color: var(--color-link);
+  box-shadow: var(--shadow-sm);
+}
+
+.train-time-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+}
+
+@media (min-width: 576px) {
+  .train-time-info {
+    flex-direction: row;
+    align-items: center;
+    gap: 2.5rem;
+  }
+}
+
+.train-identity h5 {
+  margin: 0 0 0.2rem 0;
+  font-size: 1.1rem;
+  color: var(--color-primary);
+  font-weight: 750;
+}
+
+.train-no {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.time-dur-block {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.time-time {
+  display: flex;
+  flex-direction: column;
+}
+
+.time-time strong {
+  font-size: 1.15rem;
+  color: var(--color-text-main);
+  font-weight: 700;
+}
+
+.time-time .station {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.dur-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80px;
+}
+
+.dur-text {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.arrow-line {
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-border);
+  position: relative;
+}
+
+.arrow-line::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -3px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--color-border);
+  border-top: 2px solid var(--color-border);
+  transform: rotate(45deg);
+}
+
+/* Availability seats columns */
+.availability-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+  width: 100%;
+}
+
+@media (min-width: 992px) {
+  .availability-grid {
+    width: 380px;
+  }
+}
+
+.avail-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 0.8rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition);
+  background-color: #fafbfc;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.avail-card.green-avail {
+  border-color: rgba(46, 204, 113, 0.3);
+}
+
+.avail-card.green-avail .avail-status {
+  color: var(--color-success);
+  font-weight: 700;
+}
+
+.avail-card.red-wait {
+  border-color: rgba(217, 83, 79, 0.2);
+}
+
+.avail-card.red-wait .avail-status {
+  color: #d9534f;
+  font-weight: 700;
+}
+
+.avail-card.selected {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.avail-card.selected * {
+  color: white !important;
+}
+
+.class-code {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  text-transform: uppercase;
+}
+
+.avail-status {
+  font-size: 0.85rem;
+}
+
+.price-tag {
+  font-size: 0.9rem;
+  font-weight: 750;
+  color: var(--color-text-main);
+}
+
+/* Connection Banner */
+.selected-connection-banner {
+  background: var(--color-primary);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  font-size: 0.92rem;
+  margin-bottom: 2rem;
+}
+
+/* Passengers Phase form fields */
+.passenger-entry-form {
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  padding: 2.2rem;
+  border-radius: var(--radius);
+}
+
+.passenger-entry-form h3 {
+  margin: 0 0 0.2rem 0;
+  font-size: 1.3rem;
+  color: var(--color-primary);
+  font-weight: 750;
+}
+
+.subtitle-info {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  margin: 0 0 2rem 0;
+}
+
+.passenger-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 1.2rem;
+  margin-bottom: 1.2rem;
+  align-items: stretch;
+}
+
+@media (min-width: 768px) {
+  .passenger-row {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.row-no {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  width: 24px;
+}
+
+.passenger-row input,
+.passenger-row select {
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  outline: none;
+  font-size: 0.92rem;
+  flex: 1;
+}
+
+.passenger-row input:focus,
+.passenger-row select:focus {
+  border-color: var(--color-link);
+}
+
+.remove-passenger-btn {
+  background: transparent;
+  color: #d9534f;
+  border: 1px solid rgba(217, 83, 79, 0.2);
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.remove-passenger-btn:hover {
+  background: #fff5f5;
+}
+
+.passenger-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.8rem;
+}
+
+.add-passenger-btn {
+  background: transparent;
+  color: var(--color-link);
+  border: 1px dashed var(--color-link);
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.add-passenger-btn:hover {
+  background: rgba(0, 102, 204, 0.05);
+}
+
+.navigation-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.back-btn {
+  background: transparent;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  padding: 0.75rem 1.4rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  background: #f8fafc;
+}
+
+.confirm-passengers-btn,
+.confirm-seating-btn,
+.pay-btn {
+  background: var(--color-accent);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.6rem;
+  border-radius: var(--radius);
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(242, 112, 36, 0.2);
+}
+
+.confirm-passengers-btn:hover,
+.confirm-seating-btn:hover:not(:disabled),
+.pay-btn:hover:not(:disabled) {
+  background: var(--color-accent-light);
+}
+
+/* Seating grid system */
+.seating-layout-grid {
+  display: flex;
+  justify-content: center;
+  background-color: #fafbfc;
+  padding: 2.5rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  margin-bottom: 2rem;
+}
+
+.coach-aisle-map {
+  display: flex;
+  gap: 1.5rem;
+  background: #ffffff;
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  align-items: stretch;
+}
+
+.cabin-side {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.seat-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+.berths-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+}
+
+.seat-box {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--color-border);
+  background: #f1f5f9;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.seat-box:hover {
+  border-color: var(--color-link);
+  background-color: #e6f7ff;
+}
+
+.seat-box.selected {
+  background-color: var(--color-accent);
+  color: white;
+  border-color: var(--color-accent);
+}
+
+.coach-aisle {
+  background-color: #f1f5f9;
+  color: var(--color-text-muted);
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 0 8px;
+  border-radius: 4px;
+}
+
+.seating-legend {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
+.indicator {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius);
+}
+
+.indicator.vacant {
+  background-color: #f1f5f9;
+  border: 1px solid var(--color-border);
+}
+
+.indicator.chosen {
+  background-color: var(--color-accent);
+}
+
+.confirm-seating-btn:disabled {
+  background: var(--color-border);
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Verify checkout phase */
+.summary-payment-card {
+  background-color: #fafbfc;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 2.2rem;
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.2rem;
+}
+
+@media (min-width: 768px) {
+  .summary-payment-card {
+    grid-template-columns: 1.8fr 1fr;
+  }
+}
+
+.summary-details h5 {
+  margin: 0 0 1rem 0;
+  font-size: 1.15rem;
+  color: var(--color-primary);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 6px;
+  font-weight: 750;
+}
+
+.summary-details p {
+  margin: 0.6rem 0;
+  font-size: 0.95rem;
+  color: var(--color-text-main);
+}
+
+.total-pricing-block {
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.price-label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.price-value {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--color-accent);
+  line-height: 1.1;
+  margin-bottom: 0.8rem;
+}
+
+.tax-info {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+.pay-btn:disabled {
+  background: var(--color-border);
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* E-Ticket styling details (IRCTC/ConfirmTkt Styled) */
+.ticket-success-message {
+  background-color: #f0fdf4;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  padding: 1.4rem;
+  border-radius: var(--radius);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.ticket-success-message h4 {
+  margin: 0 0 4px 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.ticket-success-message p {
+  margin: 0;
+  font-size: 0.88rem;
+}
+
+.e-ticket-receipt {
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  background-color: #ffffff;
+  margin-bottom: 2.5rem;
+}
+
+.receipt-banner {
+  background-color: var(--color-primary);
+  color: white;
+  padding: 1.2rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.receipt-brand {
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+}
+
+.pnr-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.pnr-lbl {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: #cbd5e1;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.pnr-val {
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.receipt-body {
+  padding: 2rem;
+}
+
+.receipt-train-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed var(--color-border);
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.train-no-name {
+  display: flex;
+  flex-direction: column;
+}
+
+.train-no-name strong {
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  font-weight: 850;
+}
+
+.train-no-name span {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.class-badge-box {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  font-size: 0.8rem;
+  font-weight: 750;
+  padding: 4px 12px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  color: var(--color-text-main);
+}
+
+.receipt-route-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.route-node {
+  display: flex;
+  flex-direction: column;
+  width: 140px;
+}
+
+.route-node.text-right {
+  text-align: right;
+}
+
+.node-time {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--color-text-main);
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.node-station {
+  font-size: 0.95rem;
+  font-weight: 750;
+  color: var(--color-primary);
+}
+
+.node-date {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.route-duration {
+  flex: 1;
+  max-width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.receipt-passengers-table {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.table-header {
+  background-color: #fafbfc;
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.8rem 1.2rem;
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1.2fr;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.table-row {
+  padding: 0.8rem 1.2rem;
+  border-bottom: 1px solid var(--color-border);
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1.2fr;
+  font-size: 0.88rem;
+  color: var(--color-text-main);
+  align-items: center;
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+.table-row .name {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.table-row .allocated {
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
+.receipt-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px dashed var(--color-border);
+  padding-top: 1.5rem;
+}
+
+.pricing-receipt {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.9rem;
+  color: var(--color-text-main);
+}
+
+.pricing-receipt strong {
+  color: var(--color-primary);
+}
+
+.barcode-simulation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.barcode-stripes {
+  width: 140px;
+  height: 34px;
+  background: repeating-linear-gradient(
+    90deg,
+    #2c3e50,
+    #2c3e50 2px,
+    #ffffff 2px,
+    #ffffff 6px,
+    #2c3e50 6px,
+    #2c3e50 8px,
+    #ffffff 8px,
+    #ffffff 12px
+  );
+  border: 1px solid var(--color-border);
+}
+
+.barcode-text {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-top: 4px;
+}
+
+.post-ticket-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.book-another-btn {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 0.85rem 2rem;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.book-another-btn:hover {
+  background: var(--color-primary-light);
+}
