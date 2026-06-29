@@ -3,7 +3,8 @@
  * Integrates directly with the secure Node.js/Express.js backend.
  */
 
-const API_BASE_URL = "http://localhost:5000/api";
+// In development, uses localhost. In production, set REACT_APP_API_URL to your deployed backend URL.
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
 
 /**
  * Helper to construct standard request headers, automatically attaching the JWT auth token.

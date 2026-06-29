@@ -16,7 +16,7 @@ const app = express();
 // Use Helmet for secure HTTP response headers (helps against XSS, clickjacking, etc.)
 app.use(helmet());
 
-// Dynamic CORS configurations supporting standard React developer server ports
+// Dynamic CORS configurations supporting both local development and production
 const allowedOrigins = [
   process.env.CLIENT_URL || 'http://localhost:3000',
   'http://localhost:5173', // Vite default port
@@ -25,9 +25,19 @@ const allowedOrigins = [
   'http://127.0.0.1:5173'
 ];
 
+// Parse additional comma-separated origins from CLIENT_URL (for multiple deployed frontends)
+if (process.env.CLIENT_URL && process.env.CLIENT_URL.includes(',')) {
+  process.env.CLIENT_URL.split(',').forEach(url => {
+    const trimmed = url.trim();
+    if (trimmed && !allowedOrigins.includes(trimmed)) {
+      allowedOrigins.push(trimmed);
+    }
+  });
+}
+
 app.use(cors({
   origin: (origin, callback) => {
-    // Allow requests with no origin (like mobile applications, postman, curl)
+    // Allow requests with no origin (like mobile applications, postman, curl, server-to-server)
     if (!origin) return callback(null, true);
     
     if (allowedOrigins.indexOf(origin) !== -1) {
